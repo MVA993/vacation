@@ -2,6 +2,16 @@
 
 class RequestM extends Db {
 
+    protected function getEmployee($employeeId) {
+        $sql = "SELECT * 
+                FROM employees
+                WHERE employee_id = '$employeeId';";
+        
+        $result = $conn->query($sql);
+        $row = $result->mysqli_fetch_assoc();
+        return $row;
+    }
+
     protected function getVacationData($beginDate, $endDate, $position){
         $sql = "SELECT * 
                 FROM requests 
@@ -13,8 +23,8 @@ class RequestM extends Db {
                 AND '$position' = position;";
 
         $result = $conn->query($sql);
-
-        return $result;
+        $rows = $result->fetch_all(MYSQLI_ASSOC);
+        return $rows;
         
     }   
 
@@ -36,8 +46,8 @@ class RequestM extends Db {
                 WHERE status = 'Pending approval';";
 
         $result = $conn->query($sql);
-
-        return $result;
+        $rows = $result->fetch_all(MYSQLI_ASSOC);
+        return $rows;
     }
 
     protected function requestStatusChange($status, $requestId){
