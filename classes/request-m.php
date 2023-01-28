@@ -29,7 +29,7 @@ class RequestM extends Db {
     }
 
     protected function getRequestData (){
-        $sql = "SELECT employee_name, begin_date, end_date, status  
+        $sql = "SELECT *  
                 FROM requests
                 INNER JOIN employees
                 ON requests.employee_id = employees.employee_id
@@ -40,8 +40,27 @@ class RequestM extends Db {
         return $result;
     }
 
-    protected function approveRequest($status){
-        $sql = "UPDATE requests"
+    protected function requestStatusChange($status, $requestId){
+        $sql = "UPDATE requests
+                SET status = $status
+                WHERE request_id = '$requestId';";
+
+        if(!$conn->query($sql) === TRUE ){
+            header("location: profile.php?error=statuschangefailed");
+            exit();
+            }
     }
 
+    protected function insertVacationDays($employeeId, $vacationDates) {
+        foreach ($vacationDates as $day){
+            $sql = "INSERT INTO vacation (employee_id, vacation_date)
+                VALUES ('$employeeId','$day');";
+        }              
+        
+        if(!$conn->query($sql) === TRUE ){
+            header("location: profile.php?error=insertfailed");
+            exit();
+        }
+    }
+    
 }
