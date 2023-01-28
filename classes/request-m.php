@@ -33,7 +33,7 @@ class RequestM extends Db {
                 VALUES ('','$employeeId', '$beginDate', '$endDate', 'Pending approval');";
         
         if(!$conn->query($sql) === TRUE ){
-            header("location: profile.php?error=insertfailed");
+            header("location: index.php?error=insertfailed");
             exit();
         }
     }
@@ -56,7 +56,7 @@ class RequestM extends Db {
                 WHERE request_id = '$requestId';";
 
         if(!$conn->query($sql) === TRUE ){
-            header("location: profile.php?error=statuschangefailed");
+            header("location: index.php?error=statuschangefailed");
             exit();
             }
     }
@@ -68,7 +68,7 @@ class RequestM extends Db {
         }              
         
         if(!$conn->query($sql) === TRUE ){
-            header("location: profile.php?error=insertfailed");
+            header("location: index.php?error=insertfailed");
             exit();
         }
     }

@@ -50,18 +50,17 @@
         }
 
         private function checkVacationDaysLeft(){
-            $employee = getEmployee($this->employeeId);
-            $position = $employee['position'];
-            $oldVacation = $employee['old_vacation'];
-            $newVacation = $employee['new_vacation'];
+            $employee = $this->getEmployee($this->employeeId);
+            //$employment = $employee['contract'];
+                $oldVacation = $employee['old_vacation'];
+                $newVacation = $employee['new_vacation'];
+                if ($this->vacationExpiration() == false){
+                    $total = $oldVacation + $newVacation;
+                }else{
+                    $total = $newVacation;
+                }
+                return $total;
 
-            if ($this->vacationExpiration() == false){
-                $totalVacation = $oldVacation + $newVacation;
-            }else{
-                $totalVacation = $newVacation;
             }
-
-            
-        }
         
     }
