@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="includes/req-submit.inc.php" method="POST">
+    <form action="includes/validate.php" method="POST">
         Beginning date:
         <input type="date" id="startDate" name="startDate">
         End date:
