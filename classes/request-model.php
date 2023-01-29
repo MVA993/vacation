@@ -1,6 +1,6 @@
 <?php
 
-class RequestM extends Db {
+class RequestModel extends Db {
 
     protected function getEmployee($employeeId) {
         $sql = "SELECT * 
@@ -30,7 +30,7 @@ class RequestM extends Db {
 
     protected function insertRequest($beginDate, $endDate, $employeeId) {
         $sql = "INSERT INTO requests (request_id, employee_id, begin_date, end_date, status)
-                VALUES ('','$employeeId', '$beginDate', '$endDate', 'Pending approval');";
+                VALUES ('','$employeeId', '$beginDate', '$endDate', 'Pending');";
         
         if(!$conn->query($sql) === TRUE ){
             header("location: index.php?error=insertfailed");
@@ -43,7 +43,7 @@ class RequestM extends Db {
                 FROM requests
                 INNER JOIN employees
                 ON requests.employee_id = employees.employee_id
-                WHERE status = 'Pending approval';";
+                WHERE status = 'Pending';";
 
         $result = $conn->query($sql);
         $rows = $result->fetch_all(MYSQLI_ASSOC);
@@ -71,6 +71,10 @@ class RequestM extends Db {
             header("location: index.php?error=insertfailed");
             exit();
         }
+    }
+
+    protected function getEmployeeStatus($employeeId){
+        
     }
     
 }

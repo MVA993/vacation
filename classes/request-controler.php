@@ -1,6 +1,6 @@
 <?php
 
-    class RequestC extends RequestM {
+    class RequestControler extends RequestModel {
 
         private $beginDate;
         private $endDate;
@@ -31,6 +31,8 @@
 
         public function requestApprove(){
             
+
+
         }
 
         private function getWorkingDays(){
