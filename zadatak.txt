@@ -1,0 +1,24 @@
+Zadatak se odnosi na elektronske prijave godišnjih odmora za zaposlene.
+
+
+Budući da se radi o zadatku od 4-6 radnih sati, uzimamo u obzir da je ovo prototip, a ne full funkcionalna aplikacija. Zato ne moraš koristiti bazu ili graditi pravi API, već budi slobodan da simuliraš dohvatanje i čuvanje podataka.
+
+
+
+Ideja je da imamo dva tipa korisnika: admine i zaposlene.
+
+Zaposleni mogu imati različite uloge (npr. front-end, back-end, marketing, itd...), tip ugovora (za stalno/na određeno) i datum početka rada.
+
+Svaki zaposleni ima broj dana godišnjeg odmora koji im slede u zavisnosti od tipa ugovora i dužine rada u firmi.
+
+Zaposleni za stalno imaju 20 dana godišnjeg odmora od dana početka ugovora (ili početka godine) + broj preostalih dana iz prethodne godine koje nisu iskoristili ako su zaposleni za stalno duže od godinu dana.
+
+Dani iz predhodne godine se prenose do 30.06, posle toga prestaju da važe.
+
+Zaposleni na ugovor imaju broj dana koji se računaju po sledećoj formuli: 20/12 x broj punih meseci u tekućoj godini.
+
+Dodatan uslov da bi neko dobio odobrenje za godišnji odmor je da se ne preklapa sa drugom osobom iz tima koja ima istu ulogu (npr. dva back-end developera ne mogu ići na odmor u isto vreme).
+
+
+
+Pošto se ispune svi uslovi i kako bi zaposleni mogao da podnese zahtev, informišu se administratori koji taj zahtev mogu odobriti.
