@@ -37,7 +37,7 @@
             $vacationDays = $this->getWorkingDays();
             $this->requestStatusChange($this->status, $this->requestId);
             $this->insertVacationDays($this->employeeId, $vacationDays);
-            header("location:../index.php?error=vacationreviewed");
+            header("location:../index.php?error=none");
             exit();
 
         }

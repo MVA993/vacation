@@ -1,5 +1,5 @@
 EMPLOYEES
-employee_id | employee_name| date_of_employment | position | contract | old_vacation | new_vacation | status 
+employee_id | employee_name | date_of_employment | position | contract | old_vacation | new_vacation | status 
 
 REQUESTS
 request_id | employee_id | begin_date | end_date | status   
