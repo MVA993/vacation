@@ -5,11 +5,15 @@
         private $beginDate;
         private $endDate;
         private $employeeId;
+        private $requestId;
+        private $status;
 
-        public function __construct($beginDate, $endDate, $employeeId){
+        public function __construct($beginDate, $endDate, $employeeId, $requestId, $status){
             $this->beginDate = $beginDate;
             $this->endDate = $endDate;
             $this->employeeId = $employeeId;
+            $this->requestId = $requestId;
+            $this->status = $status;
 
         }
         
@@ -29,9 +33,12 @@
 
         }
 
-        public function requestApprove(){
-            
-
+        public function requestComplete(){
+            $vacationDays = $this->getWorkingDays();
+            $this->requestStatusChange($this->status, $this->requestId);
+            $this->insertVacationDays($this->employeeId, $vacationDays);
+            header("location:../index.php?error=vacationreviewed");
+            exit();
 
         }
 
@@ -106,4 +113,5 @@
             return $result;
 
         }
+        
     }

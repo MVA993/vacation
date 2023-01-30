@@ -25,21 +25,23 @@
                  }
 
                 echo "
-                <tr>
-                    
+                <tr>                    
                     <td>".$row['employee_name']."</td>
                     <td>".$row['begin_date']."</td>
                     <td>".$row['end_date']."</td>
                     <td>".$row['status']."</td>
-                    <form action='/approve.php' method='POST'>
-                    <td>
+                    <form action='../includes/review-request.php' method='POST'>
+                        <td>
                         <input type='hidden' name='requestId' value=".$row['request_id'].">
-                        <input type='radio' id='approve' name='request' value='Approved' checked='checked'/>
+                        <input type='hidden' name='beginDate' value=".$row['begin_date'].">
+                        <input type='hidden' name='endDate' value=".$row['end_date'].">
+                        <input type='hidden' name='employeeId' value=".$row['emp_id'].">
+                        <input type='radio' id='approve' name='status' value='Approved' checked='checked'/>
                         <label for='approve'>Approve request</label>
-                        <input type='radio' id='reject' name='request' value='Rejected'>
+                        <input type='radio' id='reject' name='status' value='Rejected'>
                         <label for='reject'>Reject request</label>
                         <button type='submit' name='submit'> Submit </button>
-                    </td>
+                        </td>
                     </form>
                 </tr>
                 ";
@@ -48,15 +50,16 @@
             echo "</table>";
             }
 
-            private function checkForAdmin(){
-                $employee = $this->getEmployee($this->employeeId);
-                if($employee['status'] != 'admin'){
-                    $result = false;
-                }else{
-                    $result = true;
-                }
+        private function checkForAdmin(){
+            $employee = $this->getEmployee($this->employeeId);
 
-                return $result;
+            if($employee['status'] != 'admin'){
+                $result = false;
+            }else{
+                $result = true;
+            }
+
+            return $result;
 
             }
     

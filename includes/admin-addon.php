@@ -8,6 +8,4 @@
 
     $requestList = new RequestView($employeeId);
 
-
-
-    //Kod koji prikazuje tabelu sa izlistanim zahtevima za odmor.
+    $requestList->displayRequests();

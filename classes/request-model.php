@@ -39,10 +39,10 @@ class RequestModel extends Db {
     }
 
     protected function getRequestData (){
-        $sql = "SELECT *  
-                FROM requests
-                INNER JOIN employees
-                ON requests.employee_id = employees.employee_id
+        $sql = "SELECT request_id, employee_name, begin_date, end_date, e.employee_id AS emp_id 
+                FROM requests AS r
+                INNER JOIN employees AS e
+                ON r.employee_id = e.employee_id
                 WHERE status = 'Pending';";
 
         $result = $conn->query($sql);
@@ -73,8 +73,5 @@ class RequestModel extends Db {
         }
     }
 
-    protected function getEmployeeStatus($employeeId){
         
-    }
-    
 }
